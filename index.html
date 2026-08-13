@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelas 6B — Website Resmi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        /* === NAVBAR ATAS === */
+        nav {
+            background: #ffffff;
+            padding: 16px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.4em;
+            color: #2563eb;
+        }
+
+        .nav-links a {
+            margin-left: 28px;
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* === BAGIAN UTAMA: KAMI ADALAH === */
+        .hero {
+            max-width: 900px;
+            margin: 90px auto 60px;
+            text-align: center;
+            padding: 0 24px;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 18px;
+            color: #111827;
+        }
+
+        .hero p.deskripsi {
+            font-size: 1.1em;
+            color: #6b7280;
+            margin-bottom: 40px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .tombol-baris {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tombol-biru {
+            background: #2563eb;
+            color: #fff;
+            padding: 13px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .tombol-biru:hover {
+            background: #1d4ed8;
+        }
+
+        .tombol-putih {
+            background: #fff;
+            color: #374151;
+            border: 2px solid #e5e7eb;
+            padding: 13px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .tombol-putih:hover {
+            border-color: #d1d5db;
+            background: #f9fafb;
+        }
+
+        /* === BAGIAN: TENTANG KAMI === */
+        .bagian {
+            max-width: 900px;
+            margin: 0 auto 70px;
+            padding: 0 24px;
+        }
+
+        .bagian h2 {
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f3f4f6;
+            color: #1f2937;
+        }
+
+        .kotak-info {
+            background: #f9fafb;
+            border-radius: 14px;
+            padding: 28px;
+        }
+
+        .baris-info {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .baris-info:last-child {
+            border-bottom: none;
+        }
+
+        /* === ANGGOTA KELAS === */
+        .grid-anggota {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .kotak-nama {
+            background: #eff6ff;
+            color: #1e40af;
+            padding: 12px;
+            text-align: center;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+
+        /* === JADWAL PELAJARAN === */
+        .tabel-jadwal {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .tabel-jadwal th,
+        .tabel-jadwal td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .tabel-jadwal th {
+            background: #2563eb;
+            color: #fff;
+        }
+
+        .tabel-jadwal tr:hover {
+            background: #f3f4f6;
+        }
+
+        /* === GALERI FOTO === */
+        .grid-galeri {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .kotak-foto {
+            background: #e5e7eb;
+            border-radius: 10px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        /* === KONTAK === */
+        .daftar-kontak p {
+            padding: 8px 0;
+            font-size: 1em;
+        }
+
+        /* === FOOTER BAWAH === */
+        footer {
+            background: #1f2937;
+            color: #d1d5db;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin-bottom: 6px;
+        }
+
+        /* === RESPONSIF HP === */
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; }
+            .nav-links a { margin-left: 12px; }
+            .hero h1 { font-size: 2em; }
+            .grid-galeri { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 480px) {
+            .grid-galeri { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- === NAVBAR === -->
+    <nav>
+        <div class="logo">6B</div>
+        <div class="nav-links">
+            <a href="#beranda">Beranda</a>
+            <a href="#tentang">Tentang</a>
+            <a href="#anggota">Anggota</a>
+            <a href="#jadwal">Jadwal</a>
+          
+            <a href="#kontak">Kontak</a>
+        </div>
+    </nav>
+
+    <!-- === BAGIAN UTAMA: KAMI ADALAH === -->
+    <section class="hero" id="beranda">
+        <h1>Kami Adalah Kelas 6B</h1>
+        <p class="deskripsi">Kelas yang kompak, penuh semangat, saling menyayangi, dan selalu bersatu dalam suka maupun duka. Belajar dengan rajin, berakhlak mulia, dan siap meraih cita-cita tinggi! — Sekolah Dasar [Nama Sekolah]</p>
+        <div class="tombol-baris">
+            <a href="#jadwal" class="tombol-biru">Jadwal Kelas</a/
+        </div>
+    </section>
+
+    <!-- === TENTANG KAMI === -->
+    <section class="bagian" id="tentang">
+        <h2>📋 Tentang Kelas 6B</h2>
+        <div class="kotak-info">
+            <div class="baris-info">
+                <span><strong>Kelas</strong></span>
+                <span>6B</span>
+            </div>
+            <div class="baris-info">
+                <span><strong>Sekolah</strong></span>
+                <span>SD [katolik 10 santa theresia]</span>
+            </div>
+            <div class="baris-info">
+                <span><strong>Wali Kelas</strong></span>
+                <span>[ibu Nanda mandagi]</span>
+            </div>
+            <div class="baris-info">
+                <span><strong>Tahun Ajaran</strong></span>
+                <span>2025 / 2026</span>
+            </div>
+            <div class="baris-info">
+                <span><strong>Jumlah Siswa</strong></span>
+                <span>[30 orang</span>
+            </div>
+            <div class="baris-info">
+                <span><strong>Motto Kelas</strong></span>
+                <span>Rajin, Sopan, Cerdas, Berbakti!</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- === ANGGOTA KELAS === -->
+    <section class="bagian" id="anggota">
+        <h2>👫 Anggota Kelas</h2>
+        <div class="grid-anggota">
+            <div class="kotak-nama">bella</div>
+            <div class="kotak-nama">alexander</div>
+            <div class="kotak-nama">amel</div>
+            <div class="kotak-nama">arga</div>
+            <div class="kotak-nama">brooklyn</div>
+            <div class="kotak-nama">Ashka</div>
+            <div class="kotak-nama">Elnathan</div>
+            <div class="kotak-nama">mark</div>
+            <div class="kotak-nama">Janet</div>
+            <div class="kotak-nama">[Putra]</div>
+            <div class="kotak-nama">[Noigo]</div>
+            <div class="kotak-nama">[matthew]</div>
+            <div class="kotak-nama">[Chris]</div>
+            <div class="kotak-nama">[Giel]</div>
+            <div class="kotak-nama">[Nael]</div>
+            <div class="kotak-nama">[Zanetha]</div>
+            <div class="kotak-nama">sultan</div>
+            <div class="kotak-nama">prince</div>
+            <div class="kotak-nama">selin</div>
+            <div class="kotak-nama">rafael</div>
+            <div class="kotak-nama">edgardo</div>
+            <div class="kotak-nama">edward</div>
+            <div class="kotak-nama">carisa</div>
+            <div class="kotak-nama">mathhew L</div>
+            <div class="kotak-nama">jordan</div>
+            <div class="kotak-nama">jorgie</div>
+            <div class="kotak-nama">ethan</div>
+            <div class="kotak-nama">maleano</div>
+            <div class="kotak-nama">clairine</div>
+            <div class="kotak-nama">edvino</div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- === JADWAL PELAJARAN === -->
+    <section class="bagian" id="jadwal">
+        <h2>📅 Jadwal Pelajaran</h2>
+        <div class="kotak-info">
+            <table class="tabel-jadwal">
+                <thead>
+                    <tr>
+                        <th>Hari</th>
+                        <th>Pelajaran 1</th>
+                        <th>Pelajaran 2</th>
+                        <th>Pelajaran 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Senin</td>
+                        <td>Bahasa Indonesia</td>
+                        <td>informatika</td>
+                        <td>matematika</td>
+                    </tr>
+                    <tr>
+                        <td>Selasa</td>
+                        <td>agama</td>
+                        <td>pjok</td>
+                        <td>pancasila</td>
+                    </tr>
+                    <tr>
+                        <td>Rabu</td>
+                        <td>matematika</td>
+                        <td>ipas</td>
+                        <td>bahasa inggris</td>
+                    </tr>
+                    <tr>
+                        <td>Kamis</td>
+                        <td>seni budaya</td>
+                        <td>pancasila</td>
+                        <td>bahasa mandarin</td>
+                    </tr>
+                    <tr>
+                        <td>Jumat</td>
+                        <td>bahasa indonesia</td>
+                        <td>ipas</td>
+                        <td>Kka</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+
+    <!-- === KONTAK === -->
+    <section class="bagian" id="kontak">
+        <h2>📞 Hubungi Kami</h2>
+        <div class="kotak-info daftar-kontak">
+            <p><strong>Alamat Sekolah:</strong> [perum gpi jalan dahlia utama no 2]</p>
+            <p><strong>Ibu nanda:</strong> [N]</p>
+            
+            <p><strong>Tahun Dibuat:</strong> 2018</p>
+        </div>
+    </section>
+
+    <!-- === BAGIAN BAWAH === -->
+    <footer>
+        <p><strong>Website Kelas 6B — SD [10 santa theresia]</strong></p>
+        <p>Dibuat dengan kebersamaan ❤️ | Tahun Ajaran 2025 / 2026</p>
+        <p style="margin-top:10px; font-size:0.85em;">Semua untuk kemajuan bersama!</p>
+    </footer>
+
+</body>
+</html>
